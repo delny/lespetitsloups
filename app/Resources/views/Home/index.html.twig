@@ -3,7 +3,44 @@
 {% block title %} Les Petits Loups - Accueil {% endblock %}
 
 {% block body %}
-    <div>
-        Site en construction !
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('{{ asset('bundles/app/img/home-bg.jpg') }}')">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h1>Les Petits Loups</h1>
+                        <span class="subheading">Une cr&ecirc;che croquignolesque !</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-preview">
+                        <h2 class="post-title">
+                            Pr&eacute;sentation de la cr&ecirc;che "Les Petits Loups"
+                        </h2>
+                        <p class="post-subtitle">
+                            Site pour cr&ecirc;che de gestion des parents/enfants.<br>
+                            En construction
+                            Suivre l'avancement du site :
+                            <ul class="list-group">
+                                <li>Sur <a href="http://www.github.com/delny/lespetitsloups">Github</a></li>
+                                <li>Sur <a href="https://trello.com/b/GIJdfjK5">Trello</a></li>
+                            </ul>
+                        </p>
+                    <p class="post-meta">Post&eacute;
+                        <a href="{{ path('homepage') }}">Les Petits Loups</a>
+                        le 27 novembre</p>
+                </div>
+                <hr>
+            </div>
+        </div>
     </div>
 {% endblock %}
