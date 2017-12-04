@@ -23,6 +23,12 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @var UserGroup
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\UserGroup", inversedBy="users")
+     */
+    private $group;
+
+    /**
      * Get id
      *
      * @return int
@@ -31,6 +37,6 @@ class User extends BaseUser
     {
         return $this->id;
     }
-    
+
 }
 
