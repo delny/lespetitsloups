@@ -33,3 +33,8 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    app.usergroup.manager:
+        class: AppBundle\Manager\UserGroupManager
+        arguments:
+            - "@=service('doctrine').getManager()"
