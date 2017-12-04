@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Les Petits Loups{% endblock %}</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('bundles/app/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{{ asset('bundles/app/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('bundles/app/css/clean-blog.min.css') }}" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+
+<body>
+{% include 'menu.html.twig' %}
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('{{ asset('bundles/app/img/home-bg.jpg') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Les Petits Loups</h1>
+                    <span class="subheading">Une cr&ecirc;che croquignolesque !</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        {% block content %}
+            {% for type, messages in app.session.flashBag.all %}
+                {% for message in messages %}
+                    <div class="alert-{{ type }}">
+                        {{ message|trans({}, 'FOSUserBundle') }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% trans_default_domain 'FOSUserBundle' %}
+            {% if error %}
+                <div id="error" class="alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+            <form method="post" action="{{ path('fos_user_security_check') }}">
+                {% if csrf_token %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                {% endif %}
+                <div class="form-group">
+                    <label for="username" class="label_index">Nom d'utilisateur</label>
+                    <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                </div>
+                <div class="form-group">
+                    <label for="password" class="label_index">Mot de passe</label>
+                    <input class="form-control" type="password" id="password" name="_password" required="required" />
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input">
+                        Se souvenir de moi
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Connexion</button>
+            </form>
+        {% endblock %}
+    </div>
+</div>
+<!-- Begin Footer -->
+{% include 'footer.html.twig' %}
+<!-- End Footer -->
+{% block javascripts %}
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ asset('bundles/app/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- Custom scripts for this template -->
+    <script src="{{ asset('bundles/app/js/clean-blog.min.js') }}"></script>
+{% endblock %}
+</body>
+</html>
