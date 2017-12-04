@@ -46,7 +46,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
             $user->setPlainPassword($data['plainpassword']);
             $user->setEnabled(true);
 
-            $user->setGroup($data['group']);
+            $user->setGroup($data['usergroup']);
             if($i==0){
                 $user->setRoles(array('ROLE_ADMIN'));
             }

@@ -18,8 +18,6 @@ class LoadUserGroupData extends AbstractFixture implements OrderedFixtureInterfa
 {
 
     /**
-     * Load data fixtures with the passed EntityManager
-     *
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)
@@ -39,7 +37,7 @@ class LoadUserGroupData extends AbstractFixture implements OrderedFixtureInterfa
             $userGroup = new UserGroup();
             $userGroup->setName($data['name']);
             $manager->persist($userGroup);
-            $this->addReference('usergroup-'.$i, $userGroup);
+            $this->addReference('usergroup-'.$i,$userGroup);
         }
         $manager->flush();
     }
