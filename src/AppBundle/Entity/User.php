@@ -38,5 +38,24 @@ class User extends BaseUser
         return $this->id;
     }
 
+    /**
+     * @return UserGroup
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+    /**
+     * @param UserGroup $group
+     * @return User
+     */
+    public function setGroup($group)
+    {
+        $this->group = $group;
+        return $this;
+    }
+
+
 }
 
